@@ -20,14 +20,37 @@ func main() {
 		log.Fatal(err)
 	}
 
+	log.Println("Creating new router...")
 	router := mux.NewRouter()
 
-	//API router for students
-	router.HandleFunc("/students", getStudents).Methods("GET")
-	router.HandleFunc("/students/{id}", getStudent).Methods("GET")
-	router.HandleFunc("/students", addStudent).Methods("POST")
-	router.HandleFunc("/students/{id}", updateStudent).Methods("PUT")
-	router.HandleFunc("/students/{id}", deleteStudent).Methods("DELETE")
+	log.Println("Registering routes...")
+	//API routes for students
+	router.HandleFunc("/api/v1/students", getStudents).Methods("GET")
+	router.HandleFunc("/api/v1/students/{id}", getStudent).Methods("GET")
+	router.HandleFunc("/api/v1/students", addStudent).Methods("POST")
+	router.HandleFunc("/api/v1/students/{id}", updateStudent).Methods("PUT")
+	router.HandleFunc("/api/v1/students/{id}", deleteStudent).Methods("DELETE")
+
+	//API routes for positions
+	router.HandleFunc("/api/v1/positions", getPositions).Methods("GET")
+	router.HandleFunc("/api/v1/positions/{id}", getPosition).Methods("GET")
+	router.HandleFunc("/api/v1/positions", addPosition).Methods("POST")
+	router.HandleFunc("/api/v1/positions/{id}", updatePosition).Methods("PUT")
+	router.HandleFunc("/api/v1/positions/{id}", deletePosition).Methods("DELETE")
+
+	//API routes for supervisors
+	router.HandleFunc("/api/v1/supervisors", getSupervisors).Methods("GET")
+	router.HandleFunc("/api/v1/supervisors/{id}", getSupervisor).Methods("GET")
+	router.HandleFunc("/api/v1/supervisors", addSupervisor).Methods("POST")
+	router.HandleFunc("/api/v1/supervisors/{id}", updateSupervisor).Methods("PUT")
+	router.HandleFunc("/api/v1/supervisors/{id}", deleteSupervisor).Methods("DELETE")
+
+	//API routes for application status
+	router.HandleFunc("/api/v1/applicationStatus", getApplicationsStatus).Methods("GET")
+	router.HandleFunc("/api/v1/applicationStatus/{id}", getApplicationStatus).Methods("GET")
+	router.HandleFunc("/api/v1/applicationStatus", addApplicationStatus).Methods("POST")
+	router.HandleFunc("/api/v1/applicationStatus/{id}", updateApplicationStatus).Methods("PUT")
+	router.HandleFunc("/api/v1/applicationStatus/{id}", deleteApplicationStatus).Methods("DELETE")
 
 	log.Println("Server is running on port 8080...")
 	log.Fatal(http.ListenAndServe(":8080", router))
