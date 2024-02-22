@@ -10,5 +10,16 @@
             "username": "jobs",
             "password": "204851"
         }
-    ]
+    ],
+    "eslint.validate": ["vue", "javascript", "typescript"],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.stylelint": "explicit"
+    },
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    "css.validate": false
 }

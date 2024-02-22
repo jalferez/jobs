@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 	"net/http"
-
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
@@ -22,6 +22,15 @@ func main() {
 
 	log.Println("Creating new router...")
 	router := mux.NewRouter()
+
+	corsHandler := handlers.CORS(
+		handlers.AllowedOrigins([]string{"http://localhost:5173"}),
+		handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"}),
+		handlers.AllowedHeaders([]string{"Content-Type"}),
+	)
+
+	router.Use(corsHandler)
+
 
 	log.Println("Registering routes...")
 	//API routes for students

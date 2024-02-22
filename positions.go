@@ -9,14 +9,14 @@ import (
 )
 
 type Position struct {
-	Position_id     int    `json:"position_id"`
-	Department_name string `json:"department_name"`
-	Position_name   string `json:"position_name"`
-	Age_requirement int    `json:"age_requirement"`
-	Semester        string `json:"semester"`
-	Email           string `json:"email"`
-	Phone_number    string `json:"phone_number"`
-	Pay_rate        float64    `json:"pay_rate"`
+	Position_id     int     `json:"position_id"`
+	Department_name string  `json:"department_name"`
+	Position_name   string  `json:"position_name"`
+	Age_requirement int     `json:"age_requirement"`
+	Semester        string  `json:"semester"`
+	Email           string  `json:"email"`
+	Phone_number    string  `json:"phone_number"`
+	Pay_rate        float64 `json:"pay_rate"`
 }
 
 func getPositions(w http.ResponseWriter, r *http.Request) {
